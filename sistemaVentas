@@ -1,0 +1,60 @@
+productos = [
+    {"nombre": "Laptop", "precio": 2500},
+    {"nombre": "Mouse", "precio": 50},
+    {"nombre": "Teclado", "precio": 120},
+    {"nombre": "Monitor", "precio": 800}
+]
+ 
+carrito = []
+ 
+while True:
+    print("\n--- MENÚ ---")
+    print("1. Comprar producto")
+    print("2. Ver carrito")
+    print("3. Calcular total")
+    print("4. Salir")
+ 
+    opcion = input("Elige una opción: ")
+ 
+    if opcion == "1":
+        print("\nProductos disponibles:")
+        for i, p in enumerate(productos, start=1):
+            print(f"{i}. {p['nombre']} - ${p['precio']}")
+ 
+        try:
+            eleccion = int(input("Selecciona el número del producto: "))
+            if 1 <= eleccion <= len(productos):
+                cantidad = int(input("Cantidad: "))
+                producto = productos[eleccion - 1]
+ 
+                carrito.append({
+                    "nombre": producto["nombre"],
+                    "precio": producto["precio"],
+                    "cantidad": cantidad
+                })
+ 
+                print("Producto agregado al carrito.")
+            else:
+                print("Número inválido.")
+        except:
+            print("Entrada inválida.")
+ 
+    elif opcion == "2":
+        if not carrito:
+            print("El carrito está vacío.")
+        else:
+            print("\nCarrito:")
+            for item in carrito:
+                subtotal = item["precio"] * item["cantidad"]
+                print(f"{item['nombre']} x{item['cantidad']} = ${subtotal}")
+ 
+    elif opcion == "3":
+        total = sum(item["precio"] * item["cantidad"] for item in carrito)
+        print("Total a pagar:", total)
+ 
+    elif opcion == "4":
+        print("Saliendo...")
+        break
+ 
+    else:
+        print("Opción inválida")
