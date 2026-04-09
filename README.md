@@ -4,7 +4,7 @@
 
 - Luis Beltrán
 - Iván J. Cortés
-- *Compañera
+- Daniela Leal
 
 ## Descripción
 
